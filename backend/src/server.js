@@ -24,6 +24,11 @@ app.use(
 
 app.use("/api", routes);
 
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.originalUrl}`);
+  next();
+});
+
 // for deployment
 
 if (process.env.NODE_ENV === "production") {
